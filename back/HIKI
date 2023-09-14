@@ -1,0 +1,1810 @@
+{
+	"info": {
+		"_postman_id": "899c1672-23de-470c-b44d-ff49dad6ea9c",
+		"name": "Person-BasedAccessControl",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Gerenciamento de usuário",
+			"item": [
+				{
+					"name": "Adicionar usuário",
+					"request": {
+						"auth": {
+							"type": "digest",
+							"digest": [
+								{
+									"key": "password",
+									"value": "Abc12345",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "algorithm",
+									"value": "MD5",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"UserInfo\": {\r\n        \"employeeNo\": \"1\",\r\n        \"name\": \"Giovani Bublitz\",\r\n        \"userType\": \"normal\",\r\n        \"Valid\": {\r\n            \"enable\": false,\r\n            \"beginTime\": \"2021-12-01T17:30:08\",\r\n            \"endTime\": \"2030-08-01T17:30:08\"\r\n        },\r\n        \"doorRight\": \"1\",\r\n        \"RightPlan\": [\r\n            {\r\n                \"doorNo\": 1,\r\n                \"planTemplateNo\": \"1\"\r\n            }\r\n        ]\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOSTINFO}}/ISAPI/AccessControl/UserInfo/SetUp?format=json",
+							"host": [
+								"{{HOSTINFO}}"
+							],
+							"path": [
+								"ISAPI",
+								"AccessControl",
+								"UserInfo",
+								"SetUp"
+							],
+							"query": [
+								{
+									"key": "format",
+									"value": "json"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pesquisar usuário",
+					"request": {
+						"auth": {
+							"type": "digest",
+							"digest": [
+								{
+									"key": "password",
+									"value": "Abc12345",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "algorithm",
+									"value": "MD5",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"UserInfoSearchCond\": {\r\n        \"searchID\": \"1\",\r\n        \"searchResultPosition\": 0,\r\n        \"maxResults\": 30,\r\n        \"EmployeeNoList\": [\r\n            {\r\n                \"employeeNo\": \"1\"\r\n            }\r\n        ]\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOSTINFO}}/ISAPI/AccessControl/UserInfo/Search?format=json",
+							"host": [
+								"{{HOSTINFO}}"
+							],
+							"path": [
+								"ISAPI",
+								"AccessControl",
+								"UserInfo",
+								"Search"
+							],
+							"query": [
+								{
+									"key": "format",
+									"value": "json"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pesquisar todos usuários",
+					"request": {
+						"auth": {
+							"type": "digest",
+							"digest": [
+								{
+									"key": "password",
+									"value": "Abc12345",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "algorithm",
+									"value": "MD5",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"UserInfoSearchCond\": {\r\n        \"searchID\": \"1\",\r\n        \"searchResultPosition\": 0,\r\n        \"maxResults\": 3\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOSTINFO}}/ISAPI/AccessControl/UserInfo/Search?format=json",
+							"host": [
+								"{{HOSTINFO}}"
+							],
+							"path": [
+								"ISAPI",
+								"AccessControl",
+								"UserInfo",
+								"Search"
+							],
+							"query": [
+								{
+									"key": "format",
+									"value": "json"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar usuário",
+					"request": {
+						"auth": {
+							"type": "digest",
+							"digest": [
+								{
+									"key": "password",
+									"value": "Abc12345",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "algorithm",
+									"value": "MD5",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"UserInfoDelCond\": {\r\n        \"EmployeeNoList\": [\r\n            {\r\n                \"employeeNo\": \"1\"\r\n            }\r\n        ]\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOSTINFO}}/ISAPI/AccessControl/UserInfo/Delete?format=json",
+							"host": [
+								"{{HOSTINFO}}"
+							],
+							"path": [
+								"ISAPI",
+								"AccessControl",
+								"UserInfo",
+								"Delete"
+							],
+							"query": [
+								{
+									"key": "format",
+									"value": "json"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Gerenciamento de cartão",
+			"item": [
+				{
+					"name": "Adicionar cartão",
+					"request": {
+						"auth": {
+							"type": "digest",
+							"digest": [
+								{
+									"key": "password",
+									"value": "Abc12345",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "algorithm",
+									"value": "MD5",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"CardInfo\": {\r\n        \"employeeNo\": \"1\",\r\n        \"cardNo\": \"1234567890\",\r\n        \"cardType\": \"normalCard\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOSTINFO}}/ISAPI/AccessControl/CardInfo/SetUp?format=json",
+							"host": [
+								"{{HOSTINFO}}"
+							],
+							"path": [
+								"ISAPI",
+								"AccessControl",
+								"CardInfo",
+								"SetUp"
+							],
+							"query": [
+								{
+									"key": "format",
+									"value": "json"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pesquisar cartão",
+					"request": {
+						"auth": {
+							"type": "digest",
+							"digest": [
+								{
+									"key": "password",
+									"value": "Abc12345",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "algorithm",
+									"value": "MD5",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"CardInfoSearchCond\": {\r\n        \"searchID\": \"0\",\r\n        \"searchResultPosition\": 0,\r\n        \"maxResults\": 30,\r\n        \"CardNoList\": [\r\n            {\r\n                \"cardNo\": \"1234567890\"\r\n            }\r\n        ]\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOSTINFO}}/ISAPI/AccessControl/CardInfo/Search?format=json",
+							"host": [
+								"{{HOSTINFO}}"
+							],
+							"path": [
+								"ISAPI",
+								"AccessControl",
+								"CardInfo",
+								"Search"
+							],
+							"query": [
+								{
+									"key": "format",
+									"value": "json"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar cartão",
+					"request": {
+						"auth": {
+							"type": "digest",
+							"digest": [
+								{
+									"key": "password",
+									"value": "Abc12345",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "algorithm",
+									"value": "MD5",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"CardInfoDelCond\": {\r\n        \"CardNoList\": [\r\n            {\r\n                \"cardNo\": \"1234567890\"\r\n            }\r\n        ]\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOSTINFO}}/ISAPI/AccessControl/CardInfo/Delete?format=json",
+							"host": [
+								"{{HOSTINFO}}"
+							],
+							"path": [
+								"ISAPI",
+								"AccessControl",
+								"CardInfo",
+								"Delete"
+							],
+							"query": [
+								{
+									"key": "format",
+									"value": "json"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Gerenciamento de faces",
+			"item": [
+				{
+					"name": "Capturar face via terminal",
+					"request": {
+						"auth": {
+							"type": "digest",
+							"digest": [
+								{
+									"key": "password",
+									"value": "Abc12345",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "algorithm",
+									"value": "MD5",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "<CaptureFaceDataCond version=\"2.0\" xmlns=\"http://www.isapi.org/ver20/XMLSchema\">\r\n    <captureInfrared>false</captureInfrared>\r\n    <dataType>binary</dataType>\r\n</CaptureFaceDataCond>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOSTINFO}}/ISAPI/AccessControl/CaptureFaceData",
+							"host": [
+								"{{HOSTINFO}}"
+							],
+							"path": [
+								"ISAPI",
+								"AccessControl",
+								"CaptureFaceData"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Adicionar face ao usuário",
+					"request": {
+						"auth": {
+							"type": "digest",
+							"digest": [
+								{
+									"key": "password",
+									"value": "Abc12345",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "algorithm",
+									"value": "MD5",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "FaceDataRecord",
+									"value": "{\"faceLibType\":\"blackFD\",\"FDID\":\"1\",\"FPID\":\"1\"}",
+									"type": "text"
+								},
+								{
+									"key": "FaceImage",
+									"type": "file",
+									"src": "/C:/Users/Giovani/Desktop/WhatsApp Image 2022-08-15 at 08.35.26.jpeg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{HOSTINFO}}/ISAPI/Intelligent/FDLib/FaceDataRecord?format=json",
+							"host": [
+								"{{HOSTINFO}}"
+							],
+							"path": [
+								"ISAPI",
+								"Intelligent",
+								"FDLib",
+								"FaceDataRecord"
+							],
+							"query": [
+								{
+									"key": "format",
+									"value": "json"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Adicionar face ao usuário",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "FaceDataRecord",
+											"value": "{\"faceLibType\":\"blackFD\",\"FDID\":\"1\",\"FPID\":\"25\"}",
+											"type": "text"
+										},
+										{
+											"key": "FaceImage",
+											"type": "file",
+											"src": "/C:/SafeHouse/Nuvem/safe_back/images/25.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "192.168.1.148/ISAPI/Intelligent/FDLib/FaceDataRecord?format=json",
+									"host": [
+										"192",
+										"168",
+										"1",
+										"148"
+									],
+									"path": [
+										"ISAPI",
+										"Intelligent",
+										"FDLib",
+										"FaceDataRecord"
+									],
+									"query": [
+										{
+											"key": "format",
+											"value": "json"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 18 Feb 2023 11:03:40 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "webs"
+								},
+								{
+									"key": "Content-Length",
+									"value": "82"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=8, max=98"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-store"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 1,\n    \"statusString\": \"OK\",\n    \"subStatusCode\": \"ok\",\n    \"FPID\": \"25\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Buscar face do usuário",
+					"request": {
+						"auth": {
+							"type": "digest",
+							"digest": [
+								{
+									"key": "password",
+									"value": "Abc12345",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "algorithm",
+									"value": "MD5",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "FaceDataRecord",
+									"value": "{\"faceLibType\":\"blackFD\",\"FDID\":\"1\",\"FPID\":\"1\"}",
+									"type": "text"
+								},
+								{
+									"key": "FaceImage",
+									"type": "file",
+									"src": "/C:/Users/giovani.bublitz/Desktop/Nova pasta/Hikvision-GB/Hikvision/Treinamento/ACS_Optimization_ALL_ISAPI/FaceManagement/FaceManagement/bin/face.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{HOSTINFO}}/ISAPI/Intelligent/FDLib/FaceDataRecord?format=json",
+							"host": [
+								"{{HOSTINFO}}"
+							],
+							"path": [
+								"ISAPI",
+								"Intelligent",
+								"FDLib",
+								"FaceDataRecord"
+							],
+							"query": [
+								{
+									"key": "format",
+									"value": "json"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar face do usuário",
+					"request": {
+						"auth": {
+							"type": "digest",
+							"digest": [
+								{
+									"key": "password",
+									"value": "Abc12345",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "algorithm",
+									"value": "MD5",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"FPID\": [\r\n        {\r\n            \"value\": \"1\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOSTINFO}}/ISAPI/Intelligent/FDLib/FDSearch/Delete?format=json&FDID=1&faceLibType=blackFD",
+							"host": [
+								"{{HOSTINFO}}"
+							],
+							"path": [
+								"ISAPI",
+								"Intelligent",
+								"FDLib",
+								"FDSearch",
+								"Delete"
+							],
+							"query": [
+								{
+									"key": "format",
+									"value": "json"
+								},
+								{
+									"key": "FDID",
+									"value": "1"
+								},
+								{
+									"key": "faceLibType",
+									"value": "blackFD"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Autenticação remota",
+			"item": [
+				{
+					"name": "Habilitar autenticação remota",
+					"request": {
+						"auth": {
+							"type": "digest",
+							"digest": [
+								{
+									"key": "password",
+									"value": "Abc12345",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "algorithm",
+									"value": "MD5",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"AcsCfg\": {\r\n        \"remoteCheckDoorEnabled\": true,\r\n        \"checkChannelType\": \"PrivateSDK\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOSTINFO}}/ISAPI/AccessControl/AcsCfg?format=json",
+							"host": [
+								"{{HOSTINFO}}"
+							],
+							"path": [
+								"ISAPI",
+								"AccessControl",
+								"AcsCfg"
+							],
+							"query": [
+								{
+									"key": "format",
+									"value": "json"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Validar acesso do usuário",
+					"request": {
+						"auth": {
+							"type": "digest",
+							"digest": [
+								{
+									"key": "password",
+									"value": "Abc12345",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "algorithm",
+									"value": "MD5",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"RemoteCheck\": {\r\n        \"serialNo\": 25,\r\n        \"checkResult\": \"success\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOSTINFO}}/ISAPI/AccessControl/remoteCheck?format=json",
+							"host": [
+								"{{HOSTINFO}}"
+							],
+							"path": [
+								"ISAPI",
+								"AccessControl",
+								"remoteCheck"
+							],
+							"query": [
+								{
+									"key": "format",
+									"value": "json"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Eventos em tempo real (Listening Mode)",
+			"item": [
+				{
+					"name": "Configurar servidor que vai receber eventos",
+					"request": {
+						"auth": {
+							"type": "digest",
+							"digest": [
+								{
+									"key": "password",
+									"value": "Abc12345",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "algorithm",
+									"value": "MD5",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<HttpHostNotificationList version=\"2.0\" xmlns=\"http://www.isapi.org/ver20/XMLSchema\">\r\n    <HttpHostNotification>\r\n        <id>1</id>\r\n        <url>/</url>\r\n        <protocolType>HTTP</protocolType>\r\n        <parameterFormatType>JSON</parameterFormatType>\r\n        <addressingFormatType>ipaddress</addressingFormatType>\r\n        <ipAddress>10.198.36.106</ipAddress>\r\n        <portNo>9898</portNo>\r\n        <httpAuthenticationMethod>none</httpAuthenticationMethod>\r\n    </HttpHostNotification>\r\n</HttpHostNotificationList>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOSTINFO}}/ISAPI/Event/notification/httpHosts",
+							"host": [
+								"{{HOSTINFO}}"
+							],
+							"path": [
+								"ISAPI",
+								"Event",
+								"notification",
+								"httpHosts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Desabilita o envio da foto para servidor TCP",
+					"request": {
+						"auth": {
+							"type": "digest",
+							"digest": [
+								{
+									"key": "password",
+									"value": "Abc12345",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "algorithm",
+									"value": "MD5",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"AcsCfg\": {\r\n        \"uploadVerificationPic\": false\r\n    }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOSTINFO}}/ISAPI/AccessControl/AcsCfg?format=json",
+							"host": [
+								"{{HOSTINFO}}"
+							],
+							"path": [
+								"ISAPI",
+								"AccessControl",
+								"AcsCfg"
+							],
+							"query": [
+								{
+									"key": "format",
+									"value": "json"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Gerenciamento de biometria",
+			"item": [
+				{
+					"name": "Capturar biometria via terminal",
+					"request": {
+						"auth": {
+							"type": "digest",
+							"digest": [
+								{
+									"key": "password",
+									"value": "Abc12345",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "algorithm",
+									"value": "MD5",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "<CaptureFingerPrintCond version=\"2.0\" xmlns=\"http://www.isapi.org/ver20/XMLSchema\">\r\n    <fingerNo>1</fingerNo>\r\n</CaptureFingerPrintCond>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOSTINFO}}/ISAPI/AccessControl/CaptureFingerPrint",
+							"host": [
+								"{{HOSTINFO}}"
+							],
+							"path": [
+								"ISAPI",
+								"AccessControl",
+								"CaptureFingerPrint"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Adicionar biometria ao usuário",
+					"request": {
+						"auth": {
+							"type": "digest",
+							"digest": [
+								{
+									"key": "password",
+									"value": "Abc12345",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "algorithm",
+									"value": "MD5",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"FingerPrintCfg\": {\r\n        \"employeeNo\": \"1\",\r\n        \"enableCardReader\": [\r\n            1\r\n        ],\r\n        \"fingerPrintID\": 1,\r\n        \"fingerType\": \"normalFP\",\r\n        \"fingerData\": \"MzAxMhPNFWisdS2lFWi4bj+hFkicG04tJqisFnT9FliAK4CxJSilbYNtFZiY6phBJpiEM5sdJhidnap9FliMq6UpFWiY1qtVFZiMVmIVFVjE2E2VFGiwW1+dFCigVJOlFTidC5hdFbig3Z6BFSilZd6pFDiwy+Y5FTioWABmFUigzmC5Jci0BKnBFeieP6uhFfiRTDCRJEio10Z9JEiw2WxxFCig0OuxJSi4UvxtFHjAz/vdJDiwzxKGFjiAxmqBFziIIYF1J1hoJrZBF6iQPMF5F7iYNL6pF3igKtFhJ9h4Pd1xJ+h4PeIlJ2h4Sf0hF0iAwiF9JGig0jg9JKiw4Fs1FHiwYJU5FGjAzptFFGjIZK1JFIiwYLUdFFig2LVZJIi4Wd4dFDigz+BZJHioXgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUxMAMigBMGAPC09mEQC5CJ3wDBER5QVtWlkAoIkWPzFnIBICBzPtTABBBRFlCFUA1JkXTHEfA2KRBuqiIBQQewtWDm0QVFAK1qUwEQIzFQQyFzHR3AMWghVBAcsEKy5HEUUBG1KGaDDhiA5UnW4UVRUCG5B2BQOGAW6cL0VQcCAmkFICE9YvWQAAAAAAqqk=\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOSTINFO}}/ISAPI/AccessControl/FingerPrint/SetUp?format=json",
+							"host": [
+								"{{HOSTINFO}}"
+							],
+							"path": [
+								"ISAPI",
+								"AccessControl",
+								"FingerPrint",
+								"SetUp"
+							],
+							"query": [
+								{
+									"key": "format",
+									"value": "json"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Excluir biometria do usuário",
+					"request": {
+						"auth": {
+							"type": "digest",
+							"digest": [
+								{
+									"key": "password",
+									"value": "Abc12345",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "algorithm",
+									"value": "MD5",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"FingerPrintDelete\": {\r\n        \"mode\": \"byEmployeeNo\",\r\n        \"EmployeeNoDetail\": {\r\n            \"employeeNo\": \"1\",\r\n            \"enableCardReader\": [\r\n                1\r\n            ],\r\n            \"fingerPrintID\": [\r\n                1\r\n            ]\r\n        }\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOSTINFO}}/ISAPI/AccessControl/FingerPrint/Delete?format=json",
+							"host": [
+								"{{HOSTINFO}}"
+							],
+							"path": [
+								"ISAPI",
+								"AccessControl",
+								"FingerPrint",
+								"Delete"
+							],
+							"query": [
+								{
+									"key": "format",
+									"value": "json"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comandos remotos para porta",
+			"item": [
+				{
+					"name": "Abrir porta",
+					"request": {
+						"auth": {
+							"type": "digest",
+							"digest": [
+								{
+									"key": "password",
+									"value": "Abc12345",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "algorithm",
+									"value": "MD5",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "<RemoteControlDoor version=\"2.0\" xmlns=\"http://www.isapi.org/ver20/XMLSchema\">\r\n    <cmd>open</cmd>\r\n</RemoteControlDoor>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOSTINFO}}/ISAPI/AccessControl/RemoteControl/door/65535",
+							"host": [
+								"{{HOSTINFO}}"
+							],
+							"path": [
+								"ISAPI",
+								"AccessControl",
+								"RemoteControl",
+								"door",
+								"65535"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fechar porta",
+					"request": {
+						"auth": {
+							"type": "digest",
+							"digest": [
+								{
+									"key": "password",
+									"value": "Abc12345",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "algorithm",
+									"value": "MD5",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "<RemoteControlDoor version=\"2.0\" xmlns=\"http://www.isapi.org/ver20/XMLSchema\">\r\n    <cmd>close</cmd>\r\n</RemoteControlDoor>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOSTINFO}}/ISAPI/AccessControl/RemoteControl/door/65535",
+							"host": [
+								"{{HOSTINFO}}"
+							],
+							"path": [
+								"ISAPI",
+								"AccessControl",
+								"RemoteControl",
+								"door",
+								"65535"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Manter porta aberta",
+					"request": {
+						"auth": {
+							"type": "digest",
+							"digest": [
+								{
+									"key": "password",
+									"value": "Abc12345",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "algorithm",
+									"value": "MD5",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "<RemoteControlDoor version=\"2.0\" xmlns=\"http://www.isapi.org/ver20/XMLSchema\">\r\n    <cmd>alwaysOpen</cmd>\r\n</RemoteControlDoor>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOSTINFO}}/ISAPI/AccessControl/RemoteControl/door/65535",
+							"host": [
+								"{{HOSTINFO}}"
+							],
+							"path": [
+								"ISAPI",
+								"AccessControl",
+								"RemoteControl",
+								"door",
+								"65535"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Manter porta fechada",
+					"request": {
+						"auth": {
+							"type": "digest",
+							"digest": [
+								{
+									"key": "password",
+									"value": "Abc12345",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "algorithm",
+									"value": "MD5",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "<RemoteControlDoor version=\"2.0\" xmlns=\"http://www.isapi.org/ver20/XMLSchema\">\r\n    <cmd>alwaysClose</cmd>\r\n</RemoteControlDoor>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOSTINFO}}/ISAPI/AccessControl/RemoteControl/door/65535",
+							"host": [
+								"{{HOSTINFO}}"
+							],
+							"path": [
+								"ISAPI",
+								"AccessControl",
+								"RemoteControl",
+								"door",
+								"65535"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pesquisar eventos",
+			"item": [
+				{
+					"name": "Pesquisar eventos no dispositivo",
+					"request": {
+						"auth": {
+							"type": "digest",
+							"digest": [
+								{
+									"key": "password",
+									"value": "Abc12345",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "algorithm",
+									"value": "MD5",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"AcsEventCond\": {\r\n        \"searchID\": \"c9ac4f4e-0a7d-444d-86d0-3a77f317ed52\",\r\n        \"searchResultPosition\": 0,\r\n        \"maxResults\": 15,\r\n        \"major\": 0,\r\n        \"minor\": 0,\r\n        \"startTime\": \"2022-08-01T00:00:00-03:00\",\r\n        \"endTime\": \"2022-08-01T23:59:59-03:00\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOSTINFO}}/ISAPI/AccessControl/AcsEvent?format=json",
+							"host": [
+								"{{HOSTINFO}}"
+							],
+							"path": [
+								"ISAPI",
+								"AccessControl",
+								"AcsEvent"
+							],
+							"query": [
+								{
+									"key": "format",
+									"value": "json"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Agendamento de usuário",
+			"item": [
+				{
+					"name": "Verificar capacidade de agendamento de usuário",
+					"request": {
+						"auth": {
+							"type": "digest",
+							"digest": [
+								{
+									"key": "password",
+									"value": "Abc12345",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "algorithm",
+									"value": "MD5",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOSTINFO}}/ISAPI/AccessControl/UserRightWeekPlanCfg/capabilities?format=json",
+							"host": [
+								"{{HOSTINFO}}"
+							],
+							"path": [
+								"ISAPI",
+								"AccessControl",
+								"UserRightWeekPlanCfg",
+								"capabilities"
+							],
+							"query": [
+								{
+									"key": "format",
+									"value": "json"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Criar plano de horários",
+					"request": {
+						"auth": {
+							"type": "digest",
+							"digest": [
+								{
+									"key": "password",
+									"value": "Abc12345",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "algorithm",
+									"value": "MD5",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"UserRightWeekPlanCfg\": {\r\n        \"enable\": true,\r\n        \"WeekPlanCfg\": [\r\n            {\r\n                \"week\": \"Monday\",\r\n                \"id\": 1,\r\n                \"enable\": true,\r\n                \"TimeSegment\": {\r\n                    \"beginTime\": \"08:00:00\",\r\n                    \"endTime\": \"12:00:00\"\r\n                }\r\n            },\r\n            {\r\n                \"week\": \"Monday\",\r\n                \"id\": 2,\r\n                \"enable\": true,\r\n                \"TimeSegment\": {\r\n                    \"beginTime\": \"13:00:00\",\r\n                    \"endTime\": \"18:00:00\"\r\n                }\r\n            },\r\n            {\r\n                \"week\": \"Tuesday\",\r\n                \"id\": 1,\r\n                \"enable\": true,\r\n                \"TimeSegment\": {\r\n                    \"beginTime\": \"08:00:00\",\r\n                    \"endTime\": \"12:00:00\"\r\n                }\r\n            },\r\n            {\r\n                \"week\": \"Tuesday\",\r\n                \"id\": 2,\r\n                \"enable\": true,\r\n                \"TimeSegment\": {\r\n                    \"beginTime\": \"13:00:00\",\r\n                    \"endTime\": \"18:00:00\"\r\n                }\r\n            },\r\n            {\r\n                \"week\": \"Wednesday\",\r\n                \"id\": 1,\r\n                \"enable\": true,\r\n                \"TimeSegment\": {\r\n                    \"beginTime\": \"08:00:00\",\r\n                    \"endTime\": \"12:00:00\"\r\n                }\r\n            },\r\n            {\r\n                \"week\": \"Wednesday\",\r\n                \"id\": 2,\r\n                \"enable\": true,\r\n                \"TimeSegment\": {\r\n                    \"beginTime\": \"13:00:00\",\r\n                    \"endTime\": \"18:00:00\"\r\n                }\r\n            },\r\n            {\r\n                \"week\": \"Thursday\",\r\n                \"id\": 1,\r\n                \"enable\": true,\r\n                \"TimeSegment\": {\r\n                    \"beginTime\": \"08:00:00\",\r\n                    \"endTime\": \"12:00:00\"\r\n                }\r\n            },\r\n            {\r\n                \"week\": \"Thursday\",\r\n                \"id\": 2,\r\n                \"enable\": true,\r\n                \"TimeSegment\": {\r\n                    \"beginTime\": \"13:00:00\",\r\n                    \"endTime\": \"18:00:00\"\r\n                }\r\n            },\r\n            {\r\n                \"week\": \"Friday\",\r\n                \"id\": 1,\r\n                \"enable\": true,\r\n                \"TimeSegment\": {\r\n                    \"beginTime\": \"08:00:00\",\r\n                    \"endTime\": \"12:00:00\"\r\n                }\r\n            },\r\n            {\r\n                \"week\": \"Friday\",\r\n                \"id\": 2,\r\n                \"enable\": true,\r\n                \"TimeSegment\": {\r\n                    \"beginTime\": \"13:00:00\",\r\n                    \"endTime\": \"18:00:00\"\r\n                }\r\n            },\r\n            {\r\n                \"week\": \"Saturday\",\r\n                \"id\": 1,\r\n                \"enable\": true,\r\n                \"TimeSegment\": {\r\n                    \"beginTime\": \"08:00:00\",\r\n                    \"endTime\": \"10:00:00\"\r\n                }\r\n            }\r\n        ]\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOSTINFO}}/ISAPI/AccessControl/UserRightWeekPlanCfg/2?format=json",
+							"host": [
+								"{{HOSTINFO}}"
+							],
+							"path": [
+								"ISAPI",
+								"AccessControl",
+								"UserRightWeekPlanCfg",
+								"2"
+							],
+							"query": [
+								{
+									"key": "format",
+									"value": "json"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Vincular agendamento ao grupo",
+					"request": {
+						"auth": {
+							"type": "digest",
+							"digest": [
+								{
+									"key": "password",
+									"value": "Abc12345",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "algorithm",
+									"value": "MD5",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"UserRightPlanTemplate\": {\r\n        \"enable\": true,\r\n        \"templateName\": \"Horário comercial\",\r\n        \"weekPlanNo\": 1,\r\n        \"holidayGroupNo\": \"\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOSTINFO}}/ISAPI/AccessControl/UserRightPlanTemplate/2?format=json",
+							"host": [
+								"{{HOSTINFO}}"
+							],
+							"path": [
+								"ISAPI",
+								"AccessControl",
+								"UserRightPlanTemplate",
+								"2"
+							],
+							"query": [
+								{
+									"key": "format",
+									"value": "json"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Adicionar usuário ao plano de agendamento",
+					"request": {
+						"auth": {
+							"type": "digest",
+							"digest": [
+								{
+									"key": "password",
+									"value": "Abc12345",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "algorithm",
+									"value": "MD5",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"UserInfo\": {\r\n        \"employeeNo\": \"1\",\r\n        \"name\": \"Giovani Bublitz\",\r\n        \"userType\": \"normal\",\r\n        \"Valid\": {\r\n            \"enable\": false,\r\n            \"beginTime\": \"2021-12-01T17:30:08\",\r\n            \"endTime\": \"2030-08-01T17:30:08\"\r\n        },\r\n        \"doorRight\": \"1\",\r\n        \"RightPlan\": [\r\n            {\r\n                \"doorNo\": 1,\r\n                \"planTemplateNo\": \"1\"\r\n            }\r\n        ]\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOSTINFO}}/ISAPI/AccessControl/UserInfo/SetUp?format=json",
+							"host": [
+								"{{HOSTINFO}}"
+							],
+							"path": [
+								"ISAPI",
+								"AccessControl",
+								"UserInfo",
+								"SetUp"
+							],
+							"query": [
+								{
+									"key": "format",
+									"value": "json"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Agendamento de dispositivo",
+			"item": [
+				{
+					"name": "Verificar capacidade de agendamento da porta",
+					"request": {
+						"auth": {
+							"type": "digest",
+							"digest": [
+								{
+									"key": "password",
+									"value": "Abc12345",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "algorithm",
+									"value": "MD5",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOSTINFO}}/ISAPI/AccessControl/DoorStatusWeekPlanCfg/capabilities?format=json",
+							"host": [
+								"{{HOSTINFO}}"
+							],
+							"path": [
+								"ISAPI",
+								"AccessControl",
+								"DoorStatusWeekPlanCfg",
+								"capabilities"
+							],
+							"query": [
+								{
+									"key": "format",
+									"value": "json"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Configurar plano de agendamento para porta",
+					"request": {
+						"auth": {
+							"type": "digest",
+							"digest": [
+								{
+									"key": "password",
+									"value": "Abc12345",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "algorithm",
+									"value": "MD5",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"DoorStatusWeekPlanCfg\": {\r\n        \"enable\": true,\r\n        \"WeekPlanCfg\": [\r\n            {\r\n                \"week\": \"Monday\",\r\n                \"id\": 1,\r\n                \"enable\": true,\r\n                \"doorStatus\": \"remainOpen\",\r\n                \"TimeSegment\": {\r\n                    \"beginTime\": \"08:00:00\",\r\n                    \"endTime\": \"12:00:00\"\r\n                }\r\n            },\r\n            {\r\n                \"week\": \"Monday\",\r\n                \"id\": 2,\r\n                \"enable\": true,\r\n                \"doorStatus\": \"remainOpen\",\r\n                \"TimeSegment\": {\r\n                    \"beginTime\": \"13:00:00\",\r\n                    \"endTime\": \"18:00:00\"\r\n                }\r\n            },\r\n            {\r\n                \"week\": \"Tuesday\",\r\n                \"id\": 1,\r\n                \"enable\": true,\r\n                \"doorStatus\": \"remainOpen\",\r\n                \"TimeSegment\": {\r\n                    \"beginTime\": \"08:00:00\",\r\n                    \"endTime\": \"12:00:00\"\r\n                }\r\n            },\r\n            {\r\n                \"week\": \"Tuesday\",\r\n                \"id\": 2,\r\n                \"enable\": true,\r\n                \"doorStatus\": \"remainOpen\",\r\n                \"TimeSegment\": {\r\n                    \"beginTime\": \"13:00:00\",\r\n                    \"endTime\": \"18:00:00\"\r\n                }\r\n            },\r\n            {\r\n                \"week\": \"Wednesday\",\r\n                \"id\": 1,\r\n                \"enable\": true,\r\n                \"doorStatus\": \"remainOpen\",\r\n                \"TimeSegment\": {\r\n                    \"beginTime\": \"08:00:00\",\r\n                    \"endTime\": \"12:00:00\"\r\n                }\r\n            },\r\n            {\r\n                \"week\": \"Wednesday\",\r\n                \"id\": 2,\r\n                \"enable\": true,\r\n                \"doorStatus\": \"remainOpen\",\r\n                \"TimeSegment\": {\r\n                    \"beginTime\": \"13:00:00\",\r\n                    \"endTime\": \"18:00:00\"\r\n                }\r\n            },\r\n            {\r\n                \"week\": \"Thursday\",\r\n                \"id\": 1,\r\n                \"enable\": true,\r\n                \"doorStatus\": \"remainOpen\",\r\n                \"TimeSegment\": {\r\n                    \"beginTime\": \"08:00:00\",\r\n                    \"endTime\": \"12:00:00\"\r\n                }\r\n            },\r\n            {\r\n                \"week\": \"Thursday\",\r\n                \"id\": 2,\r\n                \"enable\": true,\r\n                \"doorStatus\": \"remainOpen\",\r\n                \"TimeSegment\": {\r\n                    \"beginTime\": \"13:00:00\",\r\n                    \"endTime\": \"18:00:00\"\r\n                }\r\n            },\r\n            {\r\n                \"week\": \"Friday\",\r\n                \"id\": 1,\r\n                \"enable\": true,\r\n                \"doorStatus\": \"remainOpen\",\r\n                \"TimeSegment\": {\r\n                    \"beginTime\": \"08:00:00\",\r\n                    \"endTime\": \"12:00:00\"\r\n                }\r\n            },\r\n            {\r\n                \"week\": \"Friday\",\r\n                \"id\": 2,\r\n                \"enable\": true,\r\n                \"doorStatus\": \"remainOpen\",\r\n                \"TimeSegment\": {\r\n                    \"beginTime\": \"13:00:00\",\r\n                    \"endTime\": \"18:00:00\"\r\n                }\r\n            },\r\n            {\r\n                \"week\": \"Saturday\",\r\n                \"id\": 1,\r\n                \"enable\": true,\r\n                \"doorStatus\": \"remainOpen\",\r\n                \"TimeSegment\": {\r\n                    \"beginTime\": \"08:00:00\",\r\n                    \"endTime\": \"10:00:00\"\r\n                }\r\n            }\r\n        ]\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOSTINFO}}/ISAPI/AccessControl/DoorStatusWeekPlanCfg/1?format=json",
+							"host": [
+								"{{HOSTINFO}}"
+							],
+							"path": [
+								"ISAPI",
+								"AccessControl",
+								"DoorStatusWeekPlanCfg",
+								"1"
+							],
+							"query": [
+								{
+									"key": "format",
+									"value": "json"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Configura a porta ao plano de agendamento",
+					"request": {
+						"auth": {
+							"type": "digest",
+							"digest": [
+								{
+									"key": "password",
+									"value": "Abc12345",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "algorithm",
+									"value": "MD5",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"DoorStatusPlan\": {\r\n        \"templateNo\": 1\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOSTINFO}}/ISAPI/AccessControl/DoorStatusPlan/1?format=json",
+							"host": [
+								"{{HOSTINFO}}"
+							],
+							"path": [
+								"ISAPI",
+								"AccessControl",
+								"DoorStatusPlan",
+								"1"
+							],
+							"query": [
+								{
+									"key": "format",
+									"value": "json"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Vincular agendamento ao grupo",
+					"request": {
+						"auth": {
+							"type": "digest",
+							"digest": [
+								{
+									"key": "password",
+									"value": "Abc12345",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "algorithm",
+									"value": "MD5",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"DoorStatusPlanTemplate\": {\r\n        \"enable\": true,\r\n        \"templateName\": \"Manter porta aberta no horário comercial\",\r\n        \"weekPlanNo\": 1,\r\n        \"holidayGroupNo\": \"\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOSTINFO}}/ISAPI/AccessControl/DoorStatusPlanTemplate/1?format=json",
+							"host": [
+								"{{HOSTINFO}}"
+							],
+							"path": [
+								"ISAPI",
+								"AccessControl",
+								"DoorStatusPlanTemplate",
+								"1"
+							],
+							"query": [
+								{
+									"key": "format",
+									"value": "json"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

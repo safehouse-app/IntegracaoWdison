@@ -1,0 +1,143 @@
+import { pbkdf2 } from "crypto";
+import { NOMEM } from "dns";
+import { ClientRequest } from "http";
+import { text } from "stream/consumers";
+
+zone "sistemai9.com.br" {
+    type master;
+    file "/var/named/sistemai9.com.br.zone"; // Diretório onde será armazenado o arquivo da zona
+};
+
+
+sudo vi /var/named/sistemai9.com.br.zone
+
+SISTEMAI9.COM.BR
+sistemai9.com.br
+
+$TTL 86400
+@       IN      SOA     ns1.sistemai9.com.br. admin.sistemai9.com.br. (
+                      202307120901  
+                      3600        
+                      1800       
+                      604800    
+                      86400 )   
+
+@       IN      NS      ns1.sistemai9.com.br.
+@       IN      A       191.252.221.235
+www     IN      A       191.252.221.235
+
+sudo yum install certbot
+
+sudo certbot certonly --standalone -d sistemai9.com.br -d sistemai9.com.br
+
+
+server {
+    listen 3333 ssl;
+    server_name safehouseportariavirtual.com.br;
+
+    ssl_certificate /etc/letsencrypt/live/safehouseportariavirtual.com.br/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/safehouseportariavirtual.com.br/privkey.pem;
+}
+
+
+/etc/letsencrypt/live/sistemai9.com.br/fullchain.pem;
+/etc/letsencrypt/live/sistemai9.com.br/privkey.pem;
+
+
+
+boa tarde crie por favor um script de criacao mysql com os relacionamentos,para as seguintes tabelas:
+
+
+tabela tipo_comando
+id_tipo_comando PK auto incremento
+nome text
+descricao text
+
+tabela fabricante
+id_fabricante pk auto incremento
+nome  text
+logo longtext 
+status int 
+
+
+tabela comunicacao
+id_comunicacao pk auto incremento
+nome text
+descricao text
+foto longtext
+
+
+tabela modelo 
+id_modelo pk auto incremento
+id_fabricante relacionado com tabela fabricante
+id_comunicacao relacioado com tabela comunicacao
+padrao_rstp text
+is_sip int
+nome  text
+foto longtext 
+
+tabela comando_modelo
+id_comando_modelo pk auto incremento
+id_tipo_comando relacionado com a tabela tipo_comando
+id_modelo relacionado com a tabela modelo
+padrao_comando text
+
+tabela cliente
+id_cliente pk auto incremento
+nome text
+foto longtext
+status int
+quantidade_equipamentos int
+token text
+
+tabela sub_cliente
+id_sub_cliente pk auto incremento
+id_cliente relacionado com a tabela Client
+nome text
+foto long text 
+status int 
+login text 
+senha text
+token text 
+
+tabela subcliente_modelo
+id_modelo relacionamento tabela modelo
+id_subcliente relacionamento tabela sub_cliente
+
+tabela equipamento
+id_equipamento pk auto incremento
+id_modelo relacionamento tabela modelo
+ip text
+porta int
+ip_local text
+porta_local int
+nome text
+status int
+
+comando_aberto
+id_comando_aberto pk auto incremento
+id_equipamento relacionamento com tabela equipamento
+comando_final text
+data datetime
+
+comando_resposta
+id_comando_resposta pk auto incremento
+id_equipamento relacionamento com tabela equipamento
+comando_final text
+data_abertura datetime
+date_resposta datetime
+resposta longtext
+codigo_resposta int
+
+apos gerar o script de criacao, gere por favor uma stored procedure para cada tabela, 
+uma para insercao e update no banco sempre consireando a chave primaria para edicao ou insercao, 
+outra para buscar os dados com possibilidade de filtro por todos os campos, e caso tudo esteja vazio ou zerado retornar todos os registros
+
+apos gerar as tabelas, preciso que crie um back para realizar o crud no banco de dados, utilizando node.js e deixando expostas as rotas em padrao rest json, 
+
+apos o back, preciso que gere todo o front, utilizando, HTML, css e javescript, e jquery ajax para fazer as chamadas no back o Front gostaria bem bonito utilizando bootstrap
+criando uma interface bacacana com a header ja definida para colcoar minha logo, uma de menu lateral com as opcoes de paginas, e todas as listagens utilize datatables.js
+e ja deixe opcaao de downoload das tabelas em pdf e em xls, quero a pagina de lista com a tabela, e para cadastrar novos ou editar, sempre abrir um modal na tela, deixe bem formatado por favor
+e como padrao de cores e estilizacao, pode imitar o sistema do ifood, gere o codigo o mais funcional e completo possivel. 
+
+obrigado.

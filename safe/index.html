@@ -1,0 +1,941 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <script src="https://kit.fontawesome.com/641378d2a1.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap5.min.css" />
+
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.datatables.net/buttons/2.3.5/css/buttons.dataTables.min.css" />
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"></script>
+
+    <script src="js/funcao.js"></script>
+
+    <script src="js/acessos.js"></script>
+
+    <script src="js/equipamentos.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"
+        integrity="sha512-pHVGpX7F/27yZ0ISY+VVjyULApbDlD0/X0rgGbTqCE7WFW5MezNTWG/dnhtbBuICzsd0WQPgpE4REBLv+UqChw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src=" https://cdn.datatables.net/buttons/2.3.5/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.5/js/buttons.html5.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.11/cropper.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.11/cropper.min.js"></script>
+
+</head>
+
+<body style="overflow-x: hidden;">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+            <!--<a class="navbar-brand" href="#"><img height="70px" src="img/logo.png"></a>-->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+        </div>
+    </nav>
+    <div class="main-wrapper">
+
+        <div class="content">
+
+            <div class="card">
+                <div class="card-body">
+                    <br> <br> <br>
+                    <div class="row">
+                        <div class="col-lg-3">
+
+                            <div class="row">
+                                <div class="col-lg-4">
+
+                                </div>
+                                <div class="col-lg-4">
+                                    <center><img src="" id="imgCondominio" style="border-radius: 80px;" width="150px">
+                                    </center>
+                                </div>
+                                <div class="col-lg-4">
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <center>
+                                        <h5 id="spCondominio"></h5>
+                                        <b id="spEndereco"></b>
+                                        <b id="spCidade"></b><br>
+                                        <a href="javascript:void(0);" id="btnAcessos" style="display: none;"
+                                            onclick="verAcessos()" class="btn btn-success">Acessos</a><br>
+                                        <a href="javascript:void(0);" onclick="logoff();">Sair</a>
+
+                                    </center>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+                        <div class="col-lg-9">
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" style="display: none;" id="equipamentos-tab"
+                                        data-bs-toggle="tab" data-bs-target="#equipamentos" type="button" role="tab"
+                                        aria-controls="equipamentos" aria-selected="true">Equipamentos</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="pessoas-tab" style="display: none;"
+                                        data-bs-toggle="tab" data-bs-target="#pessoas" type="button" role="tab"
+                                        aria-controls="pessoas" aria-selected="false">Pessoas</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="nivel-tab" style="display: none;" data-bs-toggle="tab"
+                                        data-bs-target="#nivel" type="button" role="tab" aria-controls="nivel"
+                                        aria-selected="false">Horário</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="portas-tab" style="display: none;" data-bs-toggle="tab"
+                                        data-bs-target="#portas" type="button" role="tab" aria-controls="portas"
+                                        aria-selected="false">Portas</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="acessos-tab" style="display: none;"
+                                        data-bs-toggle="tab" data-bs-target="#acessos" type="button" role="tab"
+                                        aria-controls="acessos" aria-selected="false">Acessos</button>
+                                </li>
+
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="relatorios-tab" data-bs-toggle="tab"
+                                        data-bs-target="#relatorios" type="button" role="tab" aria-controls="relatorios"
+                                        aria-selected="false">Relatórios</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="logs-tab" style="display: none;" data-bs-toggle="tab"
+                                        data-bs-target="#logs" type="button" role="tab" aria-controls="logs"
+                                        aria-selected="false">Logs</button>
+                                </li>
+
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="usuarios-tab" style="display: none;"
+                                        data-bs-toggle="tab" data-bs-target="#usuarios" type="button" role="tab"
+                                        aria-controls="usuarios" aria-selected="false">Usuários</button>
+                                </li>
+
+
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="real-tab" onclick="realTime();" data-bs-toggle="tab"
+                                        data-bs-target="#real" type="button" role="tab" aria-controls="real"
+                                        aria-selected="false">Tempo Real</button>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade show active" id="equipamentos" role="tabpanel"
+                                    aria-labelledby="equipamentos-tab">
+
+                                    <div class="row">
+                                        <div class="col-lg-8">
+                                            <br>
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <label class="form-label">Modelo</label>
+                                                            <select id="slcModelos" class="form-select">
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <label class="form-label">Host</label>
+                                                            <input type="text" class="form-control" id="txtHost">
+                                                        </div>
+
+                                                        <div class="col-sm-3">
+                                                            <label class="form-label">Porta</label>
+                                                            <input type="text" class="form-control" id="txtPorta">
+                                                        </div>
+                                                    </div>
+                                                    <br>
+
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <label class="form-label">Usuário</label>
+                                                            <input type="text" class="form-control" id="txtUsuario">
+                                                        </div>
+
+                                                        <div class="col-sm-4">
+                                                            <label class="form-label">Senha</label>
+                                                            <input type="password" class="form-control" id="txtSenha">
+                                                        </div>
+
+                                                        <div class="col-sm-2">
+                                                            <label class="form-label">Relés</label>
+                                                            <input type="number" class="form-control" id="txtReles">
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="row">
+                                                        <div class="col-sm-4"></div>
+                                                        <div class="col-sm-4">
+                                                            <center>
+                                                                <a href="javascript:void(0);"
+                                                                    onclick="salvarEquipamento()"
+                                                                    class="btn btn-primary">Salvar</a>
+                                                            </center>
+                                                        </div>
+                                                        <div class="col-sm-4"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4">
+                                            <br>
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <table id="tblEquipamentos"
+                                                        class="table table-bordered dt-responsive nowrap table-striped align-middle"
+                                                        style="width:100%">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Host</th>
+                                                                <th>Porta</th>
+
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="cameras" role="tabpanel" aria-labelledby="cameras-tab">
+                                    Cameras
+                                </div>
+                                <div class="tab-pane fade" id="portas" role="tabpanel" aria-labelledby="portas-tab">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-lg-7">
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <label class="form-label">Equipamento</label>
+                                                            <select class="form-select" onchange="selectRele();"
+                                                                id="slcEquipamentos">
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <label class="form-label">Relé</label>
+                                                            <select class="form-select" id="slcRele" disabled>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <label class="form-label">Nome</label>
+                                                            <input type="text" class="form-control" id="txtNomePorta">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <label class="form-label">Localização</label>
+                                                            <input type="text" class="form-control"
+                                                                id="txtLocalizacaoPorta">
+                                                        </div>
+                                                    </div>
+
+                                                    <br>
+                                                    <div class="row">
+                                                        <div class="col-sm-3"></div>
+                                                        <div class="col-sm-6">
+                                                            <center>
+                                                                <a href="javascript:void(0);" onclick="salvarPorta()"
+                                                                    class="btn btn-success">SALVAR</a>
+                                                            </center>
+                                                        </div>
+                                                        <div class="col-sm-3"></div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-lg-5">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <label class="form-label">Portas Cadastradas</label>
+                                                            <table id="tblPortas"
+                                                                class="table table-bordered dt-responsive nowrap table-striped align-middle"
+                                                                style="width:100%">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Nome</th>
+                                                                        <th>Equipamento</th>
+                                                                        <th></th>
+                                                                        <th></th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="tab-pane fade" id="nivel" role="tabpanel" aria-labelledby="nivel-tab">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-lg-7">
+
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <label class="form-label">Nome</label>
+                                                            <input type="text" class="form-control" id="txtNomeHorario">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <label class="form-label">Descrição</label>
+                                                            <input type="text" class="form-control"
+                                                                id="txtDescricaoHorario">
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="checkbox" value=""
+                                                                    id="chkSempreLiberado" onchange="sempreLiberar();">
+                                                                <label class="form-check-label" for="flexCheckDefault">
+                                                                    LIBERAR 24 HORAS
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <br>
+                                                    <div class="row">
+                                                        <div class="col-sm-20">
+                                                            <label class="form-label">Domingo</label>
+                                                            <input type="time" class="form-control time"
+                                                                id="txtInicioDomingo">
+                                                            <input type="time" class="form-control time"
+                                                                id="txtFinalDomingo">
+                                                        </div>
+                                                        <div class="col-sm-20">
+                                                            <label class="form-label">Segunda</label>
+                                                            <input type="time" class="form-control time"
+                                                                id="txtInicioSegunda">
+                                                            <input type="time" class="form-control time"
+                                                                id="txtFinalSegunda">
+                                                        </div>
+                                                        <div class="col-sm-20">
+                                                            <label class="form-label">Terça</label>
+                                                            <input type="time" class="form-control time"
+                                                                id="txtInicioTerca">
+                                                            <input type="time" class="form-control time"
+                                                                id="txtFinalTerca">
+                                                        </div>
+                                                        <div class="col-sm-20">
+                                                            <label class="form-label">Quarta</label>
+                                                            <input type="time" class="form-control time"
+                                                                id="txtInicioQuarta">
+                                                            <input type="time" class="form-control time"
+                                                                id="txtFinalQuarta">
+                                                        </div>
+                                                        <div class="col-sm-20">
+                                                            <label class="form-label">Quinta</label>
+                                                            <input type="time" class="form-control time"
+                                                                id="txtInicioQuinta">
+                                                            <input type="time" class="form-control time"
+                                                                id="txtFinalQuinta">
+                                                        </div>
+                                                        <div class="col-sm-20">
+                                                            <label class="form-label">Sexta</label>
+                                                            <input type="time" class="form-control time"
+                                                                id="txtInicioSexta">
+                                                            <input type="time" class="form-control time"
+                                                                id="txtFinalSexta">
+                                                        </div>
+                                                        <div class="col-sm-20">
+                                                            <label class="form-label">Sábado</label>
+                                                            <input type="time" class="form-control time"
+                                                                id="txtInicioSabado">
+                                                            <input type="time" class="form-control time"
+                                                                id="txtFinalSabado">
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="row">
+                                                        <div class="col-sm-3"></div>
+                                                        <div class="col-sm-6">
+                                                            <center>
+                                                                <a href="javascript:void(0);" onclick="salvarHorario()"
+                                                                    class="btn btn-success">SALVAR</a>
+                                                            </center>
+                                                        </div>
+                                                        <div class="col-sm-3"></div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-lg-5">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <label class="form-label">Horários Cadastrados</label>
+                                                            <table id="tblHorarios"
+                                                                class="table table-bordered dt-responsive nowrap table-striped align-middle"
+                                                                style="width:100%">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Nome</th>
+                                                                        <th></th>
+                                                                        <th></th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="pessoas" role="tabpanel" aria-labelledby="pessoas-tab">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <table id="tblPessoas"
+                                                class="table table-bordered dt-responsive nowrap table-striped align-middle"
+                                                style="width:100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Nome</th>
+                                                        <th>Telefone</th>
+                                                        <th>CPF</th>
+                                                        <th>Tipo</th>
+                                                        <th></th>
+                                                        <th></th>
+                                                        <th></th>
+                                                        <th></th>
+                                                        <th></th>
+                                                        <th></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <div class="tab-pane fade" id="acessos" role="tabpanel" aria-labelledby="acessos-tab">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <label class="form-label">Horario</label>
+                                                            <select id="slcHorariosCondominio" class="form-select">
+
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <label class="form-label">Portas</label>
+                                                            <select class="form-select" id="slcPortasNivel" multiple
+                                                                aria-label="multiple select example">
+
+                                                            </select>
+                                                        </div>
+
+
+                                                    </div>
+                                                    <br>
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <label class="form-label">Selecione as pessoas para o
+                                                                Nível:</label>
+                                                            <div class="row">
+                                                                <div class="col-sm-3"></div>
+                                                                <div class="col-sm-6">
+                                                                    <center>
+                                                                        <a href="javascript:void(0);"
+                                                                            onclick="salvarNivel()"
+                                                                            class="btn btn-success">SALVAR</a>
+                                                                    </center>
+                                                                </div>
+                                                                <div class="col-sm-3"></div>
+                                                            </div>
+                                                            <table id="tblPessoasAcesso"
+                                                                class="table table-bordered dt-responsive nowrap table-striped align-middle"
+                                                                style="width:100%">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>
+                                                                            <center><input type="checkbox" id="chkTodos"
+                                                                                    class="form-check"
+                                                                                    onchange="checkAllPessoas()">
+                                                                            </center>
+                                                                        </th>
+                                                                        <th>Nome</th>
+                                                                        <th>Telefone</th>
+                                                                        <th>CPF</th>
+                                                                        <th>Tipo</th>
+
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="relatorios" role="tabpanel"
+                                    aria-labelledby="relatorios-tab">
+                                    <br>
+                                    <div class="col-xl-12">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-sm-5">
+                                                        <label class="form-label"><i class="fa fa-calendar"></i>
+                                                            Portarias</label>
+                                                        <select class="form-select" id="slcPortariasRelatorio">
+                                                            <option value='0'>Todas as Portarias</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <label class="form-label"><i class="fa fa-calendar"></i>
+                                                            Início</label>
+                                                        <input type="date" class="form-control" id="txtDataInicio">
+                                                        <input type="time" value='00:00' class="form-control"
+                                                            id="txtHoraInicio">
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <label class="form-label"><i class="fa fa-calendar"></i> Data
+                                                            Final</label>
+                                                        <input type="date" class="form-control" id="txtDataFinal">
+                                                        <input type="time" value='23:59' class="form-control"
+                                                            id="txtHoraFinal">
+                                                    </div>
+                                                    <div class="col-sm-1">
+                                                        <label class="form-label"><i class="fa fa-eye"></i>
+                                                            Buscar</label><br>
+                                                        <button class="btn btn-success" value="Buscar"
+                                                            onclick="buscarRelatorios();">OK</button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <table id="tblRelatoriosAcesso"
+                                        class="table table-bordered dt-responsive nowrap table-striped align-middle"
+                                        style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th>Data</th>
+                                                <th>Porta</th>
+                                                <th>Tipo</th>
+                                                <th>Nome</th>
+                                                <th>Bloco</th>
+                                                <th>Complemento</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+
+
+
+                                <div class="tab-pane fade" id="logs" role="tabpanel" aria-labelledby="logs-tab">
+                                    <br>
+                                    <div class="col-xl-12">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="row">
+
+                                                    <div class="col-sm-5">
+                                                        <label class="form-label"><i class="fa fa-calendar"></i>
+                                                            Início</label>
+                                                        <input type="date" class="form-control" id="txtDataInicioLogs">
+                                                        <input type="time" class="form-control" value="00:00"
+                                                            id="txtHoraInicioLogs">
+                                                    </div>
+                                                    <div class="col-sm-5">
+                                                        <label class="form-label"><i class="fa fa-calendar"></i> Data
+                                                            Final</label>
+                                                        <input type="date" class="form-control" id="txtDataFinalLogs">
+                                                        <input type="time" value="23:59" class="form-control"
+                                                            id="txtHoraFinalLogs">
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        <label class="form-label"><i class="fa fa-eye"></i>
+                                                            Buscar</label><br>
+                                                        <button class="btn btn-success" value="Buscar"
+                                                            onclick="buscarLogs();">OK</button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <table id="tblRelatorioLogs"
+                                        class="table table-bordered dt-responsive nowrap table-striped align-middle"
+                                        style="width:100%;font-size:11px;">
+                                        <thead>
+                                            <tr>
+                                                <th>Data</th>
+                                                <th>Email</th>
+                                                <th>Função</th>
+                                                <th>Descrição</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+
+
+                                <div class="tab-pane fade" id="usuarios" role="tabpanel" aria-labelledby="usuarios-tab">
+
+                                    <br>
+                                    <a href="javascript:void(0);" onclick="newUser();" class="btn btn-success"><i
+                                            class="fa fa-plus"></i>Cadastrar Novo Usuário</a>
+                                    <table id="tblUsuarios"
+                                        class="table table-bordered dt-responsive nowrap table-striped align-middle"
+                                        style="width:100%;font-size:11px;">
+                                        <thead>
+                                            <tr>
+                                                <th>Cod</th>
+                                                <th>Email</th>
+                                                <th>Pessoa</th>
+                                                <th></th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+
+
+
+                                <div class="tab-pane fade" id="real" role="tabpanel" aria-labelledby="real-tab">
+                                    <br>
+                                    <a href="javascript:void(0);" style="font-size: 20px;" title="MAXIMIZAR"
+                                        onclick="maximizar('dvMax');"><i class="fa fa-maximize"></i></a>
+                                    <div class="col-xl-12">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <center>
+                                                    <h4><i class='fa fa-clock'></i> Tempo Real</h4>
+
+                                                </center>
+                                                <hr>
+                                                <div id="dvMax"
+                                                    style="background-color: white;overflow-y: auto;overflow-x: hidden">
+                                                    <div class="row" id="dvRealTIme" style="background-color: white;">
+
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    </div>
+
+    <script>
+        function notificar() {
+            var toastElList = [].slice
+                .call(document.querySelectorAll('.toast'));
+            var toastList = toastElList.map(function (toastEl) {
+                return new bootstrap.Toast(toastEl)
+            })
+            toastList.forEach(toast => toast.show())
+        }
+    </script>
+
+
+
+    <!-- Modal PLACA-->
+    <div class="modal fade" id="modalPlaca" tabindex="-1" aria-labelledby="modalPlacaLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalPlacaLabel">Cadastro de placa - LPR</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-primary" role="alert">
+                        <center><b id="spNomePlaca"></b></center>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-sm-12">
+                            <label class="form-label">PLACA</label>
+                            <input type="text" class="form-control" id="txtPlaca">
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" onclick="salvarPlaca();" class="btn btn-primary">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal FOTO-->
+    <div class="modal fade" id="modalFoto" tabindex="-1" aria-labelledby="modalFotoLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalFotoLabel">Cadastro de Foto - Template Facial</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-primary" role="alert">
+                        <center><b id="spNomeFacial"></b></center>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-sm-12">
+                            <center>
+                                <button id="cropBtn" onclick="finishCrop();" style="display: none;">Recortar</button>
+                                <video autoplay="true" id="webCamera">
+                                </video>
+                                <img id="previewImage" style="display: none;">
+                                <div>
+                                    <img id="croppedImage" style="display: none;">
+                                </div>
+                                <hr>
+                                <button type="button" onclick="takeSnapShot();"
+                                    class="btn btn-primary">Capturar</button>
+                                <hr>
+
+
+
+                                <div id="result" style="display: none;">
+                                    <h3>Imagem Recortada:</h3>
+                                    <img id="resultImage">
+                                </div>
+
+                                <input type="file" name="file" accept="image/*" id="upFoto" />
+                            </center>
+
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+
+
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" onclick="salvarFoto()" class="btn btn-primary">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Visualizacao-->
+    <div class="modal fade" id="modalVisualizacao" tabindex="-1" aria-labelledby="modalVisualizacaoLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalVisualizacaoLabel" id="spTituloTitulo"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="dvConteudoVisualizacao">
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">FECHAR</button>
+                    <!-- <button type="button" onclick="takeSnapShot();salvarFoto()" class="btn btn-primary">Salvar</button>-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal Nivel-->
+    <div class="modal fade" id="modalNilvel" tabindex="-1" aria-labelledby="modalNilveloLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalNilvelLabel" id="spTituloTitulo"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="dvConteudoVisualizacaoNivel">
+                    <div class="row">
+                        <h4>Confguração de Acessos para: <b id="spPessoaAcesso"></b></h4>
+                        <hr>
+                        <div class="col-lg-12">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label class="form-label">Horario</label>
+                                    <select id="slcHorariosCondominioNivel" class="form-select">
+
+                                    </select>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="form-label">Portas</label>
+                                    <select class="form-select" id="slcPortasNivelPessoa" multiple
+                                        aria-label="multiple select example">
+
+                                    </select>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" onclick="salvarNivelIndividual()" class="btn btn-primary">Salvar
+                        Nivel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal Acessos-->
+    <div class="modal fade" id="modalAcessos" tabindex="-1" aria-labelledby="modalAcessosLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalAcessosLabel">Regras Condominio</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="row">
+
+                        <div class="col-sm-3">
+                            <label class="form-label">PORTAS:</label>
+                            <div class="row" id="dvPortasAcesso">
+
+                            </div>
+                        </div>
+                        <div class="col-sm-9">
+                            <label class="form-label">PESSOAS:</label>
+                            <div class="row" id="dvPessoasAcesso">
+                                <table id="tblPessoasAcessoRegra"
+                                    class="table table-bordered dt-responsive nowrap table-striped align-middle"
+                                    style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>Presente</th>
+                                            <th>Face</th>
+                                            <th>Nome</th>
+                                            <th>Porta</th>
+                                            <th>Regra</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <!--   <button type="button" onclick="sincronizarTudo();" class="btn btn-success">SINCRONIZAR EQUIPAMENTOS</button>-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="toast" style="position: absolute;bottom: 0px;right: 0px;z-index:999999 ;">
+        <div id="dvNotificacaoPush">
+
+        </div>
+    </div>
+</body>
+<script src="js/condominio.js"></script>
+<script>
+    getCondominio();
+    getHorarios();
+    document.getElementById("txtDataInicioLogs").value = formatDate();
+    document.getElementById("txtDataFinalLogs").value = formatDate();
+    document.getElementById("txtDataInicio").value = formatDate();
+    document.getElementById("txtDataFinal").value = formatDate();
+</script>

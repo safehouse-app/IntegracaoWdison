@@ -1,0 +1,19 @@
+.col-sm-20{
+    flex: 0 0 auto;
+    width: 14.28%;
+   
+}
+.time{
+    font-size: 12px !important;
+}
+
+.bg-dark{
+    background-color: #013045!important;
+}
+.content{
+    margin-top: 80px!important;
+}
+canvas {max-width: 50vh; max-height: 100vh }
+iframe{
+    height: 300px;
+}
